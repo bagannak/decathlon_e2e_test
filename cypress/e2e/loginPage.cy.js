@@ -1,6 +1,7 @@
 
 import * as loginPage from "../support/components/loginpage/loginPageLocators";
 import * as homePage from "../support/components/homepage/homePageLocators";
+import {getErrorMessageTag} from "../support/components/loginpage/loginPageLocators";
 
 describe('login',()=>{
     let data;
@@ -22,11 +23,11 @@ describe('login',()=>{
 
     it('verify login with invalid credentials', ()=>{
             cy.login(data.inValidCredentials.email,data.inValidCredentials.password)
-            cy.getErrorMessageTag().should('be.visible');
+            getErrorMessageTag().should('be.visible');
     })
 
     it('verify try to login with empty username and password',()=>{
         cy.login(' ',' ');
-        loginPage.getErrorMessageTag().should('be.visible');
+        getErrorMessageTag().should('be.visible');
     })
 })
